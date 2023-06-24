@@ -1,0 +1,37 @@
+body{
+    background-color: #F7C8E0;
+    font-family: 'Chillax', sans-serif;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#main{
+    background-color: #A7727D;
+    padding: 25px;
+    width: 40%;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+}
+#text{
+    font-size: 30px;
+}
+#author{
+    font-size: 20px;
+    width: 100%;
+}
+#div{
+    display: flex;
+}
+#quote{
+    font-size: 50px;
+    font-weight: 900;
+}
+#new-quote, #tweet-quote{
+    padding: 25px;
+    background-color: black;
+    border-radius: 15px;
+}
