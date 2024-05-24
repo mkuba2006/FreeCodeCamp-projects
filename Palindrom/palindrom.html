@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+</head>
+<body>
+
+
+
+
+
+    <input id="text-input" type="text" placeholder="Enter a word or phrase">
+    <button id="check-btn" onclick="check()">Check</button>
+    <div id="result"></div>
+
+
+
+    <script>
+        const check = () => {
+            const input = document.getElementById("text-input").value.trim();
+            const resultDiv = document.getElementById("result");
+
+            const CzyPalindrom = (str) => {
+                const cleanStr = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+                return cleanStr === cleanStr.split("").reverse().join("");
+            };
+
+            if (CzyPalindrom(input)) {
+                resultDiv.textContent = `${input} is a palindrome`;
+            } else {
+                resultDiv.textContent = `${input} is not a palindrome`;
+            }
+        };
+    </script>
+</body>
+<style>
+    body {
+        text-align: center;
+        margin-top: 50px;
+    }
+    input {
+        padding: 8px;
+        font-size: 16px;
+    }
+    button {
+        padding: 8px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    #result {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+</style>
+</html>

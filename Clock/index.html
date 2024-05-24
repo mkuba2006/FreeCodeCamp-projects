@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="timer-container">
+    <div class="length-control">
+      <div id="break-label">Break Length</div>
+      <div class="control">
+        <button id="break-decrement">-</button>
+        <div id="break-length">5</div>
+        <button id="break-increment">+</button>
+      </div>
+    </div>
+    <div class="length-control">
+      <div id="session-label">Session Length</div>
+      <div class="control">
+        <button id="session-decrement">-</button>
+        <div id="session-length">25</div>
+        <button id="session-increment">+</button>
+      </div>
+    </div>
+    <div id="timer-label">Session</div>
+    <div id="time-left">25:00</div>
+    <button id="start_stop">Start</button>
+    <button id="reset">Reset</button>
+    <audio id="beep" src="path/to/audio.mp3"></audio>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
