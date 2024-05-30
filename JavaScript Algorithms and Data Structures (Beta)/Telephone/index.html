@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US Phone Number Validator</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>US Phone Number Validator</h1>
+        <input type="text" id="user-input" placeholder="Enter phone number">
+        <button id="check-btn">Check</button>
+        <button id="clear-btn">Clear</button>
+        <div id="results-div"></div>
+    </div>
+
+    <script>
+        document.getElementById('check-btn').addEventListener('click', function() {
+            const userInput = document.getElementById('user-input').value;
+            const resultsDiv = document.getElementById('results-div');
+
+            if (!userInput) {
+                alert('Please provide a phone number');
+                return;
+            }
+
+            const validNumber = validatePhoneNumber(userInput);
+
+            if (validNumber) {
+                resultsDiv.textContent = `Valid US number: ${userInput}`;
+            } else {
+                resultsDiv.textContent = `Invalid US number: ${userInput}`;
+            }
+        });
+
+        document.getElementById('clear-btn').addEventListener('click', function() {
+            document.getElementById('results-div').textContent = '';
+            document.getElementById('user-input').value = '';
+        });
+
+        function validatePhoneNumber(phoneNumber) {
+            const validPatterns = [
+                /^1?\s?\d{3}-\d{3}-\d{4}$/,
+                /^1?\s?\(\d{3}\)\s?\d{3}-\d{4}$/,
+                /^1?\s?\d{3}\s\d{3}\s\d{4}$/,
+                /^1?\d{10}$/,
+                /^1?\(\d{3}\)\d{3}-\d{4}$/,
+                /^1?\s?\(\d{3}\)\d{3}-\d{4}$/
+            ];
+
+            const countryCodePattern = /^1\s/;
+            const cleanedNumber = phoneNumber.replace(/[\s\-()]/g, '');
+
+            if (phoneNumber.match(countryCodePattern) && cleanedNumber.length !== 11) {
+                return false;
+            } else if (!phoneNumber.match(countryCodePattern) && cleanedNumber.length !== 10) {
+                return false;
+            }
+
+            return validPatterns.some(pattern => pattern.test(phoneNumber));
+        }
+    </script>
+</body>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button#check-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+button#clear-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+#results-div {
+    margin-top: 20px;
+    font-size: 18px;
+}
+</style>
+
+</html>
